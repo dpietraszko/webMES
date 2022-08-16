@@ -2,24 +2,23 @@ import React from "react";
 import Nav from 'react-bootstrap/Nav';
 
 const Menu = (props) => {
-const { menuSelect } = props
+const { menuSelect, machinePanelSelected } = props
 
   return (
     <Nav variant="pills" defaultActiveKey="zabrze"
-    // onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
     onSelect={menuSelect}
     >
       <Nav.Item>
-        <Nav.Link eventKey="zabrze">ZABRZE</Nav.Link>
+        <Nav.Link eventKey="zabrze" disabled={machinePanelSelected}>ZABRZE</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="zory">ŻORY</Nav.Link>
+        <Nav.Link eventKey="zory" disabled={machinePanelSelected}>ŻORY</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="gliwice1">GLIWICE 1</Nav.Link>
+        <Nav.Link eventKey="gliwice 1" disabled={machinePanelSelected}>GLIWICE 1</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="gliwice2">GLIWICE 2</Nav.Link>
+        <Nav.Link eventKey="gliwice 2" disabled={machinePanelSelected}>GLIWICE 2</Nav.Link>
       </Nav.Item>
     </Nav>
   );

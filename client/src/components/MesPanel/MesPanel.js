@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import MachinePanel from "../MachinePanel/MachinePanel";
 import Menu from "../subcomponents/Menu/Menu";
 import LayoutPlant from "../subcomponents/LayoutPlant/LayoutPlant";
 
@@ -8,6 +9,9 @@ const MesPanel = (props) => {
   const { setIsLoggedIn, setIsLoggedInName } = props;
 
   const [activeMenu, setActiveMenu] = useState("");
+  const [isClick, setIsClicked] = useState(false);
+  const [machineName, setMachineName] = useState("");
+
 
   const isSelect = (selectedKey) => {
     setActiveMenu(selectedKey)
@@ -16,13 +20,13 @@ const MesPanel = (props) => {
   const Layout = props => {
     switch(activeMenu) {
       case 'zabrze':
-        return <LayoutPlant valueColor={"#330000"}></LayoutPlant>
+        return <LayoutPlant bgColor={"#F8F8FF"} quantity={25} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'zory':
-        return <LayoutPlant valueColor={"#ff3400"}></LayoutPlant>
-      case 'gliwice1':
-        return <LayoutPlant valueColor={"#ff22ff"}></LayoutPlant>
-      case 'gliwice2':
-        return <LayoutPlant valueColor={"#6969ff"}></LayoutPlant>
+        return <LayoutPlant bgColor={"#F5F5F5"} quantity={10} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+      case 'gliwice 1':
+        return <LayoutPlant bgColor={"#F8F8FF"} quantity={15} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+      case 'gliwice 2':
+        return <LayoutPlant bgColor={"#F5F5F5"} quantity={5} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       default:
           console.log(`Sorry, we are out of ${activeMenu}.`);
     } 
@@ -35,9 +39,13 @@ const MesPanel = (props) => {
           <Header>{"Logged: " + setIsLoggedInName}</Header>
           <LoggedOutButton onClick={(e) => setIsLoggedIn(false)}>Log out</LoggedOutButton>
         </ContentHeader>
-        <Menu menuSelect = {isSelect}></Menu>
-        {<strong>{activeMenu}</strong>}
-        <Layout></Layout>
+        <Menu menuSelect = {isSelect} machinePanelSelected={isClick}></Menu>
+        <HeaderMenu>{activeMenu.toUpperCase()}</HeaderMenu>
+        {isClick ? (
+          <MachinePanel setIsClicked={setIsClicked} machineName={machineName}></MachinePanel>
+        ) : (
+          <Layout></Layout> 
+        )}
       </Content>
     </Container>
   );
@@ -102,6 +110,18 @@ const ContentHeader = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+`;
+
+const HeaderMenu = styled.strong`
+  color: #330000;
+  font-weight: bold;
+  font-size: 21px;
+  letter-spacing: 1px;
+  border: 3px solid #e9eaed;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px 10px;
+
 `;
 
 export default MesPanel;
