@@ -20,13 +20,13 @@ const MesPanel = (props) => {
   const Layout = props => {
     switch(activeMenu) {
       case 'zabrze':
-        return <LayoutPlant bgColor={"#F8F8FF"} quantity={25} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={4} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'zory':
-        return <LayoutPlant bgColor={"#F5F5F5"} quantity={10} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={13} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'gliwice 1':
-        return <LayoutPlant bgColor={"#F8F8FF"} quantity={15} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={20} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'gliwice 2':
-        return <LayoutPlant bgColor={"#F5F5F5"} quantity={5} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={10} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       default:
           console.log(`Sorry, we are out of ${activeMenu}.`);
     } 
@@ -64,7 +64,7 @@ const Content = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #ffffff;
-  border: 3px solid #e9eaed;
+  /* border: 3px solid #e9eaed; */
   width: 1600px;
 `;
 
@@ -113,12 +113,11 @@ const ContentHeader = styled.div`
 `;
 
 const HeaderMenu = styled.strong`
-  color: #330000;
+  font-family: Impact, fantasy;
+  font-size: 36px;
   font-weight: bold;
-  font-size: 21px;
+  color: #330000;
   letter-spacing: 1px;
-  border: 3px solid #e9eaed;
-  border-radius: 8px;
   padding: 10px;
   margin: 20px 10px;
 

@@ -11,7 +11,7 @@ const LayoutPlant = (props) => {
 
     const machineArr = [];
     for (let i = 1; i <= quantityMachine; i++) {
-      machineArr.push(`MACHINE ${i}`)
+      machineArr.push(`Machine ${i}`)
   }
 
     return (
@@ -38,7 +38,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   background-color: ${(props) => props.color};
-  border: 3px solid #e9eaed;
+  /* border: 3px solid #e9eaed; */
   width: 1500px;
   height: auto;
   margin: 20px;

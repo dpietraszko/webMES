@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import MachineCharts from "../subcomponents/MachineCharts/MachineCharts";
 
 const MachinePanel = (props) => {
   const { setIsClicked, machineName } = props;
@@ -12,7 +13,7 @@ const MachinePanel = (props) => {
           <Header>{machineName}</Header>
           <ReturnButton onClick={(e) => setIsClicked(false)}>Return</ReturnButton>
         </ContentHeader>
-        <MachineCharts>{`WYKRESY DLA ${machineName}`}</MachineCharts>
+        <MachineCharts machineName={machineName}></MachineCharts>
       </Content>
     </Container>
   );
@@ -31,7 +32,7 @@ const Content = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #ffffff;
-  border: 3px solid #e9eaed;
+  /* border: 3px solid #e9eaed; */
   width: 1600px;
   font-size: 38px;
 `;
@@ -45,7 +46,7 @@ const ContentHeader = styled.div`
 const Header = styled.div`
   color: #330000;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 21px;
   letter-spacing: 1px;
   width: 400px;
   height: 50px;
@@ -78,17 +79,6 @@ const ReturnButton = styled.button`
     background: #ffffff;
     box-shadow: inset 5px 5px 8px #c4c4c4, inset -5px -5px 8px #ffffff;
   }
-`;
-
-const MachineCharts = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #696969;
-  width: 1400px;
-  height: 1000px;
-  color: #ffffff;
-  font-size: 46px;
 `;
 
 export default MachinePanel;

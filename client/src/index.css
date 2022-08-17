@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Ukrywanie pasków przewijania w przeglądarce */
+::-webkit-scrollbar { 
+  display: none; 
+}

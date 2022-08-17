@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import Axios from "axios";
-import BarChart from "../../components chart/BarChart/BarChart";
-import LineChart from "../../components chart/LineChart/LineChart";
-// import PieChart from "../../components chart/PieChart/PieChart";   // Odkomentować jeśli chcemy wykres okołowy
+import styled from "styled-components";
+import BarChart from "./subcomponents/BarChart/BarChart";
+import LineChart from "./subcomponents/LineChart/LineChart";
+// import PieChart from "./subcomponents/PieChart/PieChart";
+import DoughnutChart from "./subcomponents/DoughnutChart/DoughnutChart";
 import { UserData } from "./ChartData";
 
-function ChartPanel(props) {
-  const { filteringQuantityData } = props;
+const ChartPanel = (props) => {
+  const { machineName } = props;
 
-  const [chartData, setChartData] = useState({
-    labels: filteringQuantityData.map((data) => data.date.substr(0,10)),
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.year),
     datasets: [
       {
-        label: "Filtering Quantity",
-        data: filteringQuantityData.map((data) => data.filteringQuantity),
+        label: `${machineName} Work`,
+        data: UserData.map((data) => data.machineGain),
         backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
+          "#778899",
+          "#696969",
+          "#2F4F4F",
+          "#C0C0C0",
+          "#708090",
+          "#A9A9A9",
         ],
         borderColor: "black",
         borderWidth: 2,
@@ -28,17 +29,25 @@ function ChartPanel(props) {
     ],
   });
 
+  // Dane dla wykresu DoughnutChart
+  const defensiveData = [30, 20, 15];
+  const defensiveLabels = ["Machine Gain", "Machine Losses", "Machine Breakdowns"];
+  const defensiveColors = ["#1d4671", "#2d84c2", "#99c95b", "#eaebeb"];
+
   return (
     <Container>
       <Row>
-        <BarChart chartData={chartData} />
+        <BarChart chartData={userData} />
       </Row>
       <Row>
-        <LineChart chartData={chartData} />
-      </Row>
+        <LineChart chartData={userData} />
+      </Row> 
       {/* <Row>
-        <PieChart chartData={chartData} />               // Odkomentować jeśli chcemy wykres okołowy
+        <PieChart chartData={userData} />
       </Row> */}
+      <Row>
+        <DoughnutChart chartData={defensiveData} chartLabels={defensiveLabels} chartColors={defensiveColors} chartStart={-25} />
+      </Row>
     </Container>
   );
 }
@@ -52,7 +61,8 @@ const Container = styled.div`
 `;
 
 const Row = styled.div`
-  width: 600px ;
+  width: 500px;
+  margin: 10px;
 `;
 
 export default ChartPanel;
