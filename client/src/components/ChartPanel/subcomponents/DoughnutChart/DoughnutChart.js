@@ -33,16 +33,13 @@ const DoughnutChart = (props) => {
 
   const CHART_LEGEND = {
     display: false
-    /*position: "right",
-    labels: {
-      boxWidth: 20
-    }*/
   };
 
 
 return (
     <Content>
-      <Total>{total.toFixed(2)}%</Total>
+      {/* <Total>{total.toFixed(2)}%</Total> */}
+      <Total>65.00%</Total>
       <Doughnut
         data={CHART_DATA}
         options={CHART_OPTIONS}

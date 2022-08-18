@@ -143,6 +143,7 @@ const Title = styled.h3`
   color: #330000;
   margin-bottom: 20px;
   font-size: 24px;
+  font-weight: bold;
 `;
 
 const Row = styled.div`

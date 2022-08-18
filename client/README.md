@@ -4,7 +4,7 @@ System MES, czyli Manufacturing Execution System, to inaczej System Realizacji P
 
 ## Cel projektu
 
-Celem projektu jest stworzenie pilotażowego systemu MES w sieci WEB, który będzie odzwierciedlał stan obecny aplikacji desktopowej.
+Celem projektu jest stworzenie pilotażowego systemu MES w przeglądarce internetowej, który będzie odzwierciedlał stan obecny aplikacji desktopowej.
 
 ## Opis projektu
 

@@ -8,7 +8,9 @@ import LayoutPlant from "../subcomponents/LayoutPlant/LayoutPlant";
 const MesPanel = (props) => {
   const { setIsLoggedIn, setIsLoggedInName } = props;
 
-  const [activeMenu, setActiveMenu] = useState("");
+  const arrMachineQuantity = [4, 13, 20, 10]; // Ilość maszyn odpowiednio dla zakładu
+
+  const [activeMenu, setActiveMenu] = useState("zabrze");
   const [isClick, setIsClicked] = useState(false);
   const [machineName, setMachineName] = useState("");
 
@@ -17,16 +19,16 @@ const MesPanel = (props) => {
     setActiveMenu(selectedKey)
   }
 
-  const Layout = props => {
+  const Layout = () => {
     switch(activeMenu) {
       case 'zabrze':
-        return <LayoutPlant bgColor={"#FFFFFF"} quantity={4} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={arrMachineQuantity[0]} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'zory':
-        return <LayoutPlant bgColor={"#FFFFFF"} quantity={13} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={arrMachineQuantity[1]} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'gliwice 1':
-        return <LayoutPlant bgColor={"#FFFFFF"} quantity={20} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={arrMachineQuantity[2]} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       case 'gliwice 2':
-        return <LayoutPlant bgColor={"#FFFFFF"} quantity={10} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
+        return <LayoutPlant bgColor={"#FFFFFF"} quantity={arrMachineQuantity[3]} setIsClicked={setIsClicked} setMachineName={setMachineName}></LayoutPlant>
       default:
           console.log(`Sorry, we are out of ${activeMenu}.`);
     } 
@@ -39,7 +41,7 @@ const MesPanel = (props) => {
           <Header>{"Logged: " + setIsLoggedInName}</Header>
           <LoggedOutButton onClick={(e) => setIsLoggedIn(false)}>Log out</LoggedOutButton>
         </ContentHeader>
-        <Menu menuSelect = {isSelect} machinePanelSelected={isClick}></Menu>
+        <Menu menuSelect = {isSelect} menuSelected = {activeMenu} machinePanelSelected={isClick}></Menu>
         <HeaderMenu>{activeMenu.toUpperCase()}</HeaderMenu>
         {isClick ? (
           <MachinePanel setIsClicked={setIsClicked} machineName={machineName}></MachinePanel>
@@ -64,7 +66,6 @@ const Content = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #ffffff;
-  /* border: 3px solid #e9eaed; */
   width: 1600px;
 `;
 
